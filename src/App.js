@@ -3,7 +3,7 @@
 // import Programs from "./routes/programs";
 // import Episodes from "./routes/episodes";
 import { Link } from "react-router-dom";
-import './App.css';
+import './App.scss';
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="App-header">Header</h1>
       <Link to="/programs">Programs</Link> |{" "}
       <Link to="/episodes">Episodes</Link>
       <button onClick={linkaVidare}>HELLO</button>
