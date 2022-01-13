@@ -1,10 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import './episodes.scss';
 
-export default function Episodes() {
+export const Episodes = (props) => {
   return (
-    <main style={{ padding: "1rem 0" }}>
-      <h2>Episodes</h2>
-      <Link to="/programs">Programs</Link> |
-    </main>
+<div id="body-episodes">
+<nav>
+<Link to="/programs">Start</Link> |
+ </nav>
+<h1 id="maintitle-episodes">Episodes</h1>
+<main id="main">
+  <ul className="single-post-wrapper" id="episodes-summaries">
+  </ul>
+  <p id="more-episodes"></p>
+</main> 
+</div>
   );
 }
+

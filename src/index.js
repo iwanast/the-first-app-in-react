@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.scss';
 import App from './App';
-import Programs from "./routes/programs";
-import Episodes from "./routes/episodes"
+import { Programs, Episodes} from "./routes";
 
 
 ReactDOM.render(

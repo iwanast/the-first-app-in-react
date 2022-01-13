@@ -3,7 +3,6 @@
 // import Programs from "./routes/programs";
 // import Episodes from "./routes/episodes";
 import { Link } from "react-router-dom";
-import './App.scss';
 
 
 function App() {
