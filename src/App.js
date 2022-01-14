@@ -4,7 +4,7 @@
 // import Episodes from "./routes/episodes";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"
-import { Button, CreatingAllProgramsPost } from "./components"
+import { Button, CreateProgramsPost } from "./components"
 import { fetchChildrenPrograms } from "./api/"
 
 {/* <Link to="/programs">Programs</Link> |{" "}
@@ -30,8 +30,6 @@ function App(props) {
       setBackgroundColor("turquoise-background");
     }
   }
-  
-  
     
     useEffect(() => {
       
@@ -46,14 +44,12 @@ function App(props) {
       )
     }, [age])
     
-   
-
   return (
     <div id="body-programs">
       <h1>Swedish radio for children</h1>
       <Button id="change-age-button" className={backgroundColor} label={name} onClick={toggleAge}  />
       <main id="main">
-          <CreatingAllProgramsPost programscategories={programscategories} />
+          <CreateProgramsPost programscategories={programscategories} />
       </main>
     </div>
   );

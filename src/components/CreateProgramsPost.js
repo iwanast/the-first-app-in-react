@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 
-export function CreatingAllProgramsPost( {programscategories} ) {
+export function CreateProgramsPost( {programscategories} ) {
   console.log("jag är i EachProgram", programscategories)
   return ( 
     <ul className="post-wrapper" id="posts-summaries">
     {programscategories.map((program) => (
-      // {program.hasondemand} || {program.haspod} && (
+      program.hasondemand || program.haspod ?
       <li className="post-wrapper__post" key={program.id}>
         <Link to={`/${program.id}`}>
         <img src={program.programimage} alt="Radioprograms specific logo" />
@@ -15,10 +15,9 @@ export function CreatingAllProgramsPost( {programscategories} ) {
           <p> {program.description} </p>
         </div>
         </Link>
-    </li>
+    </li> : null 
     )
     )
-// )
 }
 </ul>);
 }

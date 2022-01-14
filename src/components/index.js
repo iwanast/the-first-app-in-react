@@ -1,2 +1,2 @@
 export { Button } from "./Button"
-export { CreatingAllProgramsPost } from "./Allprogramspost"
+export { CreateProgramsPost } from "./CreateProgramsPost"
