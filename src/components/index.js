@@ -1,2 +1,2 @@
 export { Button } from "./Button"
-export { EachProgram } from "./Oneprogram"
+export { CreatingAllProgramsPost } from "./Allprogramspost"

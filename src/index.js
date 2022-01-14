@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.scss';
 import App from './App';
-import { Programs, Episodes} from "./routes";
+import { Episodes} from "./routes";
 
 
 ReactDOM.render(
@@ -11,16 +11,15 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App /> } />
-        <Route path="/programs" element={<Programs /> } />
-        <Route path="/episodes" element={<Episodes /> } />
-        <Route 
-          path="*" 
-          element={
-            <main>
-              <p>There's nothing here!</p>
-            </main>
-          } 
-        />
+      <Route path="/:id" element={<Episodes /> } />
+      <Route 
+        path="*" 
+        element={
+          <main>
+            <p>There's nothing here!</p>
+          </main>
+        } 
+      />
     </Routes>
   </BrowserRouter>
   </React.StrictMode>,

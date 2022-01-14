@@ -1,20 +1,25 @@
-export function EachProgram( {programscategories} ) {
+import { Link } from "react-router-dom"
+
+export function CreatingAllProgramsPost( {programscategories} ) {
   console.log("jag är i EachProgram", programscategories)
   return ( 
-    programscategories.map((program) => {
-     if(program.hasondemand || program.haspod) {
+    <ul className="post-wrapper" id="posts-summaries">
+    {programscategories.map((program) => (
+      // {program.hasondemand} || {program.haspod} && (
       <li className="post-wrapper__post" key={program.id}>
-    {/* <Link to={`/channel/${channel.id}`}>{channel.name}</Link>
-        <a href="./pages/episodes.html?id=${programData.id}"> */}
+        <Link to={`/${program.id}`}>
         <img src={program.programimage} alt="Radioprograms specific logo" />
         <div className="post-wrapper__content">
           <span>{program.programcategory.name}</span>
           <h3>{program.name}</h3>
           <p> {program.description} </p>
         </div>
-    {/* </a> dann auch hier?: </Link> */}
+        </Link>
     </li>
-    }}
-      
-));
+    )
+    )
+// )
 }
+</ul>);
+}
+  
