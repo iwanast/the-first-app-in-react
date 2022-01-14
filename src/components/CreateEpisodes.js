@@ -31,18 +31,19 @@ console.log("we are in createPodEpisodes")
       <ul className="single-post-wrapper" id="episodes-summaries">
         
         {pods.map((pod) => (
-          <li class="single-post-wrapper__post">
+          <li className="single-post-wrapper__post" key={pod.id}>
           <audio id={`myAudio${pod.id}`}>
+            {console.log("hier in map pod.listenpodfile.url ist: ", pod.listenpodfile.url)}
             <source src={pod.listenpodfile.url} type={`audio/${declareAudioTypeFromFileEnding(pod.listenpodfile.url)}`} />
             Your browser does not support the audio element.
           </audio>
           <img src={pod.imageurl} alt="Radioprograms image" />
-          <div class="single-post-wrapper__content">
+          <div className="single-post-wrapper__content">
             <span>{pod.listenpodfile.program.name}</span>
             <h3>{pod.listenpodfile.title}</h3>
             <p>{pod.description}</p>
-            <button class="listen-button" type="button" data-id={pod.id} data-actionSound="play" >Play</button> 
-            <button class="listen-button" type="button" data-id={pod.id} data-actionSound="pause">Pause</button>
+            <button className="listen-button" type="button" data-id={pod.id} data-actionsound="play" >Play</button> 
+            <button className="listen-button" type="button" data-id={pod.id} data-actionsound="pause">Pause</button>
           </div>
         </li> 
         ))}
@@ -76,19 +77,18 @@ export function CreateBroadcastEpisodes(broadcasts){
       <ul className="single-post-wrapper" id="episodes-summaries">
         
         {broadcasts.map((broadcast) => (
-  
-  <li class="single-post-wrapper__post">
+          <li className="single-post-wrapper__post">
   <audio id={`myAudio${broadcast.id}`}>
     <source src={broadcast.broadcast.broadcastfiles[0].url} type={`audio/${declareAudioTypeFromFileEnding(broadcast.broadcast.broadcastfiles[0].url)}`} />
     Your browser does not support the audio element.
   </audio>
   <img src={broadcast.imageurl} alt="Radioprograms image" />
-  <div class="single-post-wrapper__content">
+  <div className="single-post-wrapper__content">
    <span>{broadcast.program.name}</span>
    <h3>{broadcast.title}</h3>
    <p>{broadcast.description}</p>
-   <button class="listen-button" type="button" data-id={broadcast.id} data-actionSound="play" >Play</button> 
-    <button class="listen-button" type="button" data-id={broadcast.id} data-actionSound="pause">Pause</button>
+   <button className="listen-button" type="button" data-id={broadcast.id} data-actionsound="play" >Play</button> 
+    <button className="listen-button" type="button" data-id={broadcast.id} data-actionsound="pause">Pause</button>
   </div>
  </li>
         ))}
@@ -101,9 +101,8 @@ export function CreateBroadcastEpisodes(broadcasts){
 }
 
 
-function declareAudioTypeFromFileEnding({props}){
+function declareAudioTypeFromFileEnding(props){
   let audioFileType = props.substr(props.length - 3);
-  
   switch(audioFileType){
     case "mp3":
       audioFileType = "mpeg";
@@ -114,8 +113,7 @@ function declareAudioTypeFromFileEnding({props}){
     case "m4a":
       audioFileType = "mp4";
       break;
-    default:
-      
+    default:  
   }    
   return audioFileType;
 }
