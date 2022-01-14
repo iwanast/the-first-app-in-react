@@ -9,8 +9,9 @@ export async function fetchChildrenPrograms(id) {
 }
 
 export async function fetchChildrenEpisodes(id) {
+  console.log("Här är id fron fetchChildrenEpisode: ", id)
   return fetch(`${defaultApiUrlEpisodes}${id}&audioquality=hi&pagination=false&format=json`)
     .then((response) => response.json())
-    .then((data) => data.programs)
+    .then((data) => data.episodes)
     .catch((err) => console.error(err))
 }

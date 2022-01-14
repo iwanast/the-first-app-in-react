@@ -1,33 +1,44 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { fetchChildrenEpisodes } from "../api/"
+import {CreateBroadcastEpisodes, CreatePodEpisodes} from "../components"
 
 import './episodes.scss';
 
-export const Episodes = (props) => {
-
-  const[ episod, setEpisode] = useState(null);
-  //fetch the episodes / needing the program.id 
+export const Episodes = () => {
+  const {id} = useParams();
+  const [ broadcasts, setBroadcasts] = useState(null);
+  const [pods, setPods] = useState(null) 
 
   useEffect(() => {
-    fetchChildrenEpisodes(props.id).then((res)  => setEpisode(res))
-  }, [])
-
-
-
+    fetchChildrenEpisodes(id).then((result)  => {
+      console.log("Här är result from fetchChildrenEpisodes: ", result)
+      if(!result[0]) {
+        alert("There are no episodes")
+      }else if(result[0].listenpodfile) {
+        setPods(result)
+      }else if(result[0].broadcast) {
+        setBroadcasts(result)
+      }else {
+        alert("There are no broadcasts or pods for this program")
+      }
+    });
+  }, [id])
+    
   return (
-<div id="body-episodes">
-<nav>
-<Link to="/">Start</Link> |
- </nav>
-<h1 id="maintitle-episodes">Episodes</h1>
-<main id="main">
-  <ul className="single-post-wrapper" id="episodes-summaries">
-  </ul>
-  <p id="more-episodes"></p>
-</main> 
-</div>
+    <div id="body-episodes">
+      <nav>
+        <Link to="/">Start</Link> |
+      </nav>
+        {broadcasts && 
+          <CreateBroadcastEpisodes broadcasts={broadcasts} />
+        }
+        {pods && 
+          <CreatePodEpisodes pods={pods} />
+        }
+       
+    </div>
   );
 }
 
