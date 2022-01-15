@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 
 export function CreateProgramsPost( {programscategories} ) {
-  console.log("jag är i EachProgram", programscategories)
   return ( 
     <ul className="post-wrapper" id="posts-summaries">
     {programscategories.map((program) => (
