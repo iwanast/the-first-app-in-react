@@ -1,4 +1,6 @@
 import { useEffect, useState} from "react";
+import { Link } from "react-router-dom";
+import { AudioPlayer } from ".";
   
 export function CreatePodEpisodes({pods}){
   
@@ -25,22 +27,18 @@ export function CreatePodEpisodes({pods}){
     <h1 id="maintitle-episodes">Pods for this program</h1>
     <main id="main">
       <ul className="single-post-wrapper" id="episodes-summaries">
-        
         {pods.map((pod) => (
           pod.listenpodfile && (
           <li className="single-post-wrapper__post" key={pod.id}>
-          <audio id={`myAudio${pod.id}`}>
-            <source src={pod.listenpodfile.url} type={`audio/${declareAudioTypeFromFileEnding(pod.listenpodfile.url)}`} />
-            Your browser does not support the audio element.
-          </audio>
+            <Link to={`/audioplay/${pod.program.id}/${encodeURIComponent(pod.listenpodfile.url)}/${encodeURIComponent(pod.imageurl)}/${pod.listenpodfile.title}`}>
           <img src={pod.imageurl} alt="Radioprograms image" />
           <div className="single-post-wrapper__content">
             <span>{pod.listenpodfile.program.name}</span>
             <h3>{pod.listenpodfile.title}</h3>
             <p>{pod.description}</p>
-            <button className="listen-button" type="button" data-id={pod.id} data-actionsound="play" >Play</button> 
-            <button className="listen-button" type="button" data-id={pod.id} data-actionsound="pause">Pause</button>
+            {/* <AudioPlayer url={pod.listenpodfile.url} /> */}
           </div>
+          </Link>
         </li> 
         )))}
         </ul>
@@ -51,7 +49,6 @@ export function CreatePodEpisodes({pods}){
 }
 
 export function CreateBroadcastEpisodes({broadcasts}){
-  
   console.log("we are in createBroadcastEpisodes")
   const [textMoreBroadcasts, setTextMoreBroadcasts] = useState("");
 
@@ -61,32 +58,26 @@ export function CreateBroadcastEpisodes({broadcasts}){
       setTextMoreBroadcasts("There are more then 120 episodes but only 120 showing here!")
       broadcasts = broadcasts.slice(0, 120);
     }
-    console.log("in useEffect after evtl slicing: ", broadcasts);
   }, [broadcasts]);
   
-
-   
   return(
     <>
     <h1 id="maintitle-episodes">Broadcasts for this program from the last month</h1>
     <main id="main">
       <ul className="single-post-wrapper" id="episodes-summaries">
-        {console.log(broadcasts)}
+        {console.log("What is the same as the url here?: ", broadcasts)}
         {broadcasts.map((broadcast) => (
           broadcast.broadcast && (
           <li className="single-post-wrapper__post" key={broadcast.id}>
-            <audio id={`myAudio${broadcast.id}`}>
-              <source src={broadcast.broadcast.broadcastfiles[0].url} type={`audio/${declareAudioTypeFromFileEnding(broadcast.broadcast.broadcastfiles[0].url)}`} />
-              Your browser does not support the audio element.
-            </audio>
+            <Link to={`/audioplay/${broadcast.program.id}/${encodeURIComponent(broadcast.broadcast.broadcastfiles[0].url)}/${encodeURIComponent(broadcast.imageurl)}/${broadcast.title}`}>
             <img src={broadcast.imageurl} alt="Radioprograms image" />
             <div className="single-post-wrapper__content">
               <span>{broadcast.program.name}</span>
               <h3>{broadcast.title}</h3>
               <p>{broadcast.description}</p>
-              <button className="listen-button" type="button" data-id={broadcast.id} data-actionsound="play" >Play</button> 
-              <button className="listen-button" type="button" data-id={broadcast.id} data-actionsound="pause">Pause</button>
+              {/* <AudioPlayer url={broadcast.broadcast.broadcastfiles[0].url} /> */}
             </div>
+            </Link>
           </li>
         )))}
       </ul>
@@ -94,22 +85,4 @@ export function CreateBroadcastEpisodes({broadcasts}){
     </main>
   </>
   )
-}
-
-
-function declareAudioTypeFromFileEnding(props){
-  let audioFileType = props.substr(props.length - 3);
-  switch(audioFileType){
-    case "mp3":
-      audioFileType = "mpeg";
-      break;
-    case "oga": 
-      audioFileType = "ogg";
-      break;
-    case "m4a":
-      audioFileType = "mp4";
-      break;
-    default:  
-  }    
-  return audioFileType;
 }
