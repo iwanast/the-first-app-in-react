@@ -10,9 +10,12 @@ ReactDOM.render(
   <React.StrictMode>
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App /> } />
-      <Route path="/:id" element={<Episodes /> } />
-      <Route path="/audioplay/:id/:url/:imageurl/:title" element={<PlayEpisode /> } />
+      <Route path="/" element={<App /> } >
+        <Route path=":ageParam" element={<App /> } />
+        <Route path="" element={<App /> } />
+      </Route>
+      <Route path="/episodes/:id/:ageParam" element={<Episodes /> } />
+      <Route path="/audioplay/:id/:url/:imageurl/:title/:ageParam" element={<PlayEpisode /> } />
       <Route 
         path="*" 
         element={

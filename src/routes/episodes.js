@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom";
-
 import { fetchChildrenEpisodes } from "../api/"
 import {CreateBroadcastEpisodes, CreatePodEpisodes} from "../components"
-
 import './episodes.scss';
 
 export const Episodes = () => {
   const {id} = useParams();
+  const {ageParam} = useParams();
   const [ broadcasts, setBroadcasts] = useState(null);
   const [pods, setPods] = useState(null) 
 
@@ -29,13 +28,13 @@ export const Episodes = () => {
   return (
     <div id="body-episodes">
       <nav>
-        <Link to="/">Start</Link> |
+        <Link to={`/${ageParam}`}>Start</Link> |
       </nav>
         {broadcasts && 
-          <CreateBroadcastEpisodes broadcasts={broadcasts} />
+          <CreateBroadcastEpisodes broadcasts={broadcasts} ageParam={ageParam}/>
         }
         {pods && 
-          <CreatePodEpisodes pods={pods} />
+          <CreatePodEpisodes pods={pods} ageParam={ageParam}/>
         }
        
     </div>
