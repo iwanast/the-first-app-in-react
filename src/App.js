@@ -57,7 +57,8 @@ function App() {
     
   return (
     <div id="body-programs">
-      <h1>Swedish radio for children</h1>
+      <h1>Svensk radio för barn</h1>
+      <p className="text-align-center">Tack to Sveriges Radio API för innehållet. Till alla barn: Ha det kul! </p>
       <Button id="change-age-button" className={backgroundColor} label={name} onClick={toggleAge}  />
       <main id="main">
           <CreateProgramsPost programscategories={programscategories} ageParam={age}/>
