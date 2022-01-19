@@ -4,7 +4,7 @@ export const AudioPlayer = ( {url} ) => {
   return(
     <ReactPlayer
         url={url}
-        width="400px"
+        width="fit-container"
         height="50px"
         playing={false}
         controls={true}

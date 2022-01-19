@@ -5,23 +5,16 @@ import {CreateBroadcastEpisodes, CreatePodEpisodes} from "../components"
 import './episodes.scss';
 
 export const Episodes = () => {
-  const {id} = useParams();
-  const {ageParam} = useParams();
-  const [ broadcasts, setBroadcasts] = useState(null);
-  const [pods, setPods] = useState(null) 
+  const {id, ageParam} = useParams();
+  const [ broadcasts, setBroadcasts ] = useState(null);
+  const [ pods, setPods ] = useState(null) 
 
   useEffect(() => {
     fetchChildrenEpisodes(id).then((result)  => {
-      console.log("Här är result from fetchChildrenEpisodes: ", result)
-      if(!result[0]) {
-        alert("There are no episodes")
-      }else if(result[0].listenpodfile) {
-        setPods(result)
-      }else if(result[0].broadcast) {
-        setBroadcasts(result)
-      }else {
-        alert("There are no broadcasts or pods for this program")
-      }
+      !result[0] ? alert("Det finns inga episoder")
+      : result[0].listenpodfile ? setPods(result)
+      : result[0].broadcast ? setBroadcasts(result)
+      : alert("Det finns inga broadcasts or pods för detta program");
     });
   }, [id])
     
@@ -36,7 +29,6 @@ export const Episodes = () => {
         {pods && 
           <CreatePodEpisodes pods={pods} ageParam={ageParam}/>
         }
-       
     </div>
   );
 }

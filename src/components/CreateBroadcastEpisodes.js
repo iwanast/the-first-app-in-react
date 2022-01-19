@@ -9,7 +9,7 @@ export function CreateBroadcastEpisodes({broadcasts, ageParam}){
     console.log("här i useEffect createbroadcastepisodes")
     if(broadcasts === null) return;
     if(broadcasts.length > 120){
-      setTextMoreBroadcasts("There are more then 120 episodes but only 120 showing here!")
+      setTextMoreBroadcasts("Det finns mer än 120 episoder men bara 120 visas här!")
       broadcasts = broadcasts.slice(0, 120);
       console.log("inside the if-statemenet in useEffect in CreateBroadcastEpisodes")
     }
@@ -17,7 +17,7 @@ export function CreateBroadcastEpisodes({broadcasts, ageParam}){
 
   return(
     <>
-    <h1 id="maintitle-episodes">Broadcasts for this program from the last month</h1>
+    <h1 id="maintitle-episodes">Broadcasts för detta program från senaste månaden</h1>
     <main id="main">
       <ul className="single-post-wrapper" id="episodes-summaries">
         {console.log("What is the same as the url here?: ", broadcasts)}

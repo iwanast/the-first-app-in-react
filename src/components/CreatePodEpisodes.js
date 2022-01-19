@@ -10,7 +10,7 @@ export function CreatePodEpisodes({pods, ageParam}){
     console.log("här i useEffect podepisodes")
     if(pods === null) return; 
     if(pods.length > 120){
-      setTextMoreEpisodes("There are more then 120 episodes but only 120 showing here!")
+      setTextMoreEpisodes("Det finns mer än 120 episoder men bara 120 visas här!")
       pods = pods.slice(0, 120);
     }
     console.log("in useEffect after evtl slicing: ", pods);
@@ -20,7 +20,7 @@ export function CreatePodEpisodes({pods, ageParam}){
   
   return ( 
     <>
-    <h1 id="maintitle-episodes">Pods for this program</h1>
+    <h1 id="maintitle-episodes">Pods från detta program</h1>
     <main id="main">
       <ul className="single-post-wrapper" id="episodes-summaries">
         {pods.map((pod) => (

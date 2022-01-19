@@ -62,15 +62,27 @@ h1 {
   }
 }
 
+div #root #body-episodes #single-episode-wrapper{
+  display: "flex";
+  width: "100vw";
+  align-items:"center";
+  justify-content: "center";
+}
+
 nav{
+
+.nav-episode{
+  display: flex;
+  justify-content: center;
+}
   a{
     display: block;
-    width: 30px;
+    width: fit-content;
     padding: 8px 16px;
     background-color: rgb(129, 28, 224);
     border-radius: 10px;
     text-decoration: none;
     color: $white;
-    margin: 8px 16px;
+    margin: 16px;
   }
 }
