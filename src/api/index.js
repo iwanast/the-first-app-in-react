@@ -1,5 +1,5 @@
-const defaultApiUrlProgrameCategory = "http://api.sr.se/api/v2/programs/index?programcategoryid=";
-const defaultApiUrlEpisodes = "http://api.sr.se/api/v2/episodes/index?programid="; 
+const defaultApiUrlProgrameCategory = "api.sr.se/api/v2/programs/index?programcategoryid=";
+const defaultApiUrlEpisodes = "api.sr.se/api/v2/episodes/index?programid="; 
 
 export async function fetchChildrenPrograms(id) {
   return fetch(`${defaultApiUrlProgrameCategory}${id}&pagination=false&format=json`)
