@@ -1,21 +1,18 @@
-import { useEffect, useState, useRef} from "react";
+import { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
   
 export function CreatePodEpisodes({pods, ageParam}){
-  
-  console.log("we are in createPodEpisodes")
+
   const [textMoreEpisodes, setTextMoreEpisodes] = useState("");
-  const podsReverse = useRef([])
+
   useEffect(() => {
     console.log("här i useEffect podepisodes")
     if(pods === null) return; 
     if(pods.length > 120){
       setTextMoreEpisodes("Det finns mer än 120 episoder men bara 120 visas här!")
-      podsReverse.current = pods.slice(0, 120);
     }
-    console.log("in useEffect after evtl slicing: ", pods);
-    podsReverse.current = podsReverse.current.reverse(); 
-    console.log("här efter reverse. ", pods)
+    pods.slice(0, 120);
+    pods.reverse(); 
   }, [pods]);
   
   return ( 
@@ -23,7 +20,7 @@ export function CreatePodEpisodes({pods, ageParam}){
     <h1 id="maintitle-episodes">Pods från detta program</h1>
     <main id="main">
       <ul className="single-post-wrapper" id="episodes-summaries">
-        {podsReverse.current.map((pod) => (
+        {pods.map((pod) => (
           pod.listenpodfile && (
           <li className="single-post-wrapper__post" key={pod.id}>
             <Link to={`/audioplay/${pod.program.id}/${encodeURIComponent(pod.listenpodfile.url)}/${encodeURIComponent(pod.imageurl)}/${pod.listenpodfile.title}/${ageParam}`}>
@@ -40,6 +37,6 @@ export function CreatePodEpisodes({pods, ageParam}){
         </ul>
         <p id="more-episodes">{textMoreEpisodes}</p>
       </main>
-      </>
- )
+    </>
+  )
 }

@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom"
 function App() {
 
   const { ageParam }  = useParams();
+  // const [programCategoryId, setProgramCategoryId] = useState(null);
   const programCategoryIdAge3 = 2;
   const programCategoryIdAge9 = 132;
   const [ age, setAge ] = useState(3);
@@ -33,7 +34,7 @@ function App() {
       setName("Visa programmen för ålder 3-8");
       setAge(9);
       setBackgroundColor("pink-background");
-  } else{
+    } else{
       setName("Visa programmen för ålder 9-13")
       setAge(3);
       setBackgroundColor("turquoise-background");
