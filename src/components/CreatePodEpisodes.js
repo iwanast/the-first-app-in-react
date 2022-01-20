@@ -27,7 +27,7 @@ export function CreatePodEpisodes({pods, ageParam}){
           pod.listenpodfile && (
           <li className="single-post-wrapper__post" key={pod.id}>
             <Link to={`/audioplay/${pod.program.id}/${encodeURIComponent(pod.listenpodfile.url)}/${encodeURIComponent(pod.imageurl)}/${pod.listenpodfile.title}/${ageParam}`}>
-          <img src={pod.imageurl} alt="Radioprograms image" />
+          <img src={pod.imageurl} alt="Radioprograms logo" />
           <div className="single-post-wrapper__content">
             <span>{pod.listenpodfile.program.name}</span>
             <h3>{pod.listenpodfile.title}</h3>

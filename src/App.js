@@ -43,10 +43,8 @@ function App() {
     useEffect(() => {
       if(age === 9){
         fetchChildrenPrograms(programCategoryIdAge9).then((res) => setProgramscategories(res))
-        console.log("programscategories in console.log directly after the fetch", programscategories)
       } else if(age === 3){
         fetchChildrenPrograms(programCategoryIdAge3).then((res)  => setProgramscategories(res))
-        console.log("programscategories in console.log directly after the fetch", programscategories)
       } else(
         console.log("error when loading the programs for the different ages")
       )

@@ -25,7 +25,7 @@ export function CreateBroadcastEpisodes({broadcasts, ageParam}){
           broadcast.broadcast && (
           <li className="single-post-wrapper__post" key={broadcast.id}>
             <Link to={`/audioplay/${broadcast.program.id}/${encodeURIComponent(broadcast.broadcast.broadcastfiles[0].url)}/${encodeURIComponent(broadcast.imageurl)}/${broadcast.title}/${ageParam}`}>
-            <img src={broadcast.imageurl} alt="Radioprograms image" />
+            <img src={broadcast.imageurl} alt="Radioprograms logo" />
             <div className="single-post-wrapper__content">
               <span>{broadcast.program.name}</span>
               <h3>{broadcast.title}</h3>

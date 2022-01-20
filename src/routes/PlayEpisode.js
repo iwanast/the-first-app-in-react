@@ -8,7 +8,7 @@ export const PlayEpisode = () => {
     <div id="body-episodes" >
       <div id="single-episode-wrapper" style={{display: "flex", alignItems: "center", justifyContent: "center", marginTop: 40}}>
         <div className="single-post-wrapper__post">
-          <img src={imageurl} alt="Radioprograms image" />
+          <img src={imageurl} alt="Radioprograms logo" />
           <div className="single-post-wrapper__content">
               <h3>{title}</h3>
               <AudioPlayer url={url}/>            
