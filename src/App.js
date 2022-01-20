@@ -17,12 +17,10 @@ function App() {
       setName("Visa programmen för ålder 3-8");
       setAge(9);
       setBackgroundColor("pink-background");
-      console.log("ageParam inside useEffect 9", ageParam)
     } else if(ageParam === "3"){
       setName("Visa programmen för ålder 9-13")
       setAge(3);
       setBackgroundColor("turquoise-background");
-      console.log("ageParam inside useEffect 3", ageParam)
     }
   }, [ageParam])
   
@@ -32,7 +30,6 @@ function App() {
       setName("Visa programmen för ålder 3-8");
       setAge(9);
       setBackgroundColor("pink-background");
-      console.log("in toggle in for 9 years. Age= ", age)
     } else{
       setName("Visa programmen för ålder 9-13")
       setAge(3);
@@ -41,18 +38,14 @@ function App() {
   }
     
     useEffect(() => {
-      console.log("in useEffect to set ProgramCategoryID, age=", age);
       (age === 9) ?
         setProgramCategoryId(132)
       : (age === 3) ?
         setProgramCategoryId(2)
       : console.log("error when loading the programs for the different ages");
-      
-      console.log(programCategoryId)
     }, [age])
 
     useEffect(() => {
-      console.log(programCategoryId)
       fetchChildrenPrograms(programCategoryId).then((res) => setProgramscategories(res))
     }, [programCategoryId]);
     
