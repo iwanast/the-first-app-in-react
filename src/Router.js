@@ -16,7 +16,7 @@ const Router = () => {
         path="*" 
         element={
           <main>
-            <p>There's nothing here!</p>
+            <p>Det finns tyvärr inte något att visa här!</p>
           </main>
         } 
       />
