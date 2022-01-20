@@ -6,9 +6,7 @@ import { useParams } from "react-router-dom"
 function App() {
 
   const { ageParam }  = useParams();
-  // const [programCategoryId, setProgramCategoryId] = useState(null);
-  const programCategoryIdAge3 = 2;
-  const programCategoryIdAge9 = 132;
+  const [programCategoryId, setProgramCategoryId] = useState(2);
   const [ age, setAge ] = useState(3);
   const [ name, setName ] = useState("Visa programmen för ålder 9-13");
   const [ programscategories, setProgramscategories ] = useState([]);
@@ -34,6 +32,7 @@ function App() {
       setName("Visa programmen för ålder 3-8");
       setAge(9);
       setBackgroundColor("pink-background");
+      console.log("in toggle in for 9 years. Age= ", age)
     } else{
       setName("Visa programmen för ålder 9-13")
       setAge(3);
@@ -42,14 +41,20 @@ function App() {
   }
     
     useEffect(() => {
-      if(age === 9){
-        fetchChildrenPrograms(programCategoryIdAge9).then((res) => setProgramscategories(res))
-      } else if(age === 3){
-        fetchChildrenPrograms(programCategoryIdAge3).then((res)  => setProgramscategories(res))
-      } else(
-        console.log("error when loading the programs for the different ages")
-      )
+      console.log("in useEffect to set ProgramCategoryID, age=", age);
+      (age === 9) ?
+        setProgramCategoryId(132)
+      : (age === 3) ?
+        setProgramCategoryId(2)
+      : console.log("error when loading the programs for the different ages");
+      
+      console.log(programCategoryId)
     }, [age])
+
+    useEffect(() => {
+      console.log(programCategoryId)
+      fetchChildrenPrograms(programCategoryId).then((res) => setProgramscategories(res))
+    }, [programCategoryId]);
     
   return (
     <div id="body-programs">
